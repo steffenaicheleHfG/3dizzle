@@ -1,0 +1,513 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+:root {
+  --background: #101011;
+  --text: #EAEDF2;
+  --neutral-grey: #eaedf29d;
+  --accent: #455DDC;
+  --protein: #FF852E;
+  --calories: #F73463;
+  --carbs: #9646EF;
+  --fat: #43D1A7;
+  --steffen: #FFDFA3;
+  --seby: #B2EF9B;
+  --anton: #A3D9FF;
+  --ui-background: rgba(34, 38, 49, .6);
+  --ui-container-background: rgba(34, 38, 49, .3);
+  --menu-background: rgba(16, 16, 17, .1);
+  --shadow: 0 3px 6px rgba(0, 0, 0, .25): ;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  overflow: hidden;
+}
+* body {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  letter-spacing: -0.25px;
+  background: var(--background);
+}
+* body h1 {
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 700;
+}
+* body h3 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+* body h4 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  color: var(--neutral-grey);
+}
+* body h5 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 26px;
+}
+* body h6 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+}
+* body p {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: 400;
+}
+* body .webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+* body .icon-button-L {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+* body .icon-button-L:hover {
+  background: var(--ui-background);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+* body .icon-button-L .icon-wrapper {
+  width: 24px;
+  height: 24px;
+}
+* body .icon-button-L .icon-wrapper svg {
+  fill: var(--text);
+}
+* body #info-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  opacity: 100%;
+  transition: all 0.4s ease-in-out;
+}
+* body #info-container.hidden {
+  z-index: -50;
+  opacity: 0%;
+}
+* body #info-container.hidden .text-wrapper {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+* body #info-container.hidden .text-wrapper h1 {
+  opacity: 0;
+  transition: opacity 0.4s 0.4s ease-in-out;
+}
+* body #info-container.hidden .text-wrapper p {
+  opacity: 0;
+  transition: opacity 0.4s 0.4s ease-in-out;
+}
+* body #info-container.hidden #info-background {
+  opacity: 0;
+  transition: all 0.8s ease-in-out;
+}
+* body #info-container.hidden #close-button {
+  top: 72px;
+  opacity: 0%;
+  transition: top 0.4s 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+* body #info-container .text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 640px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 48px;
+  border-top-right-radius: 48px;
+  border-bottom-right-radius: 48px;
+  background: var(--accent);
+  box-shadow: 3px 0 6px rbga(0, 0, 0, 25%);
+  opacity: 100%;
+  transition: all 0.8s ease-in-out;
+  z-index: 55;
+}
+* body #info-container .text-wrapper h1 {
+  width: 80%;
+  opacity: 100%;
+  margin-bottom: 56px;
+  transition: opacity 0.4s 0.4s ease-in-out;
+}
+* body #info-container .text-wrapper p {
+  opacity: 100%;
+  transition: opacity 0.4s 0.4s ease-in-out;
+}
+* body #info-container .text-wrapper p .transparent {
+  color: transparent;
+}
+* body #info-container .text-wrapper p:first-of-type {
+  margin-bottom: auto;
+}
+* body #info-container #info-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--menu-background);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.8s ease-in-out;
+}
+* body #info-container #close-button {
+  position: absolute;
+  top: 56px;
+  left: 616px;
+  background: var(--text);
+  z-index: 60;
+  opacity: 100%;
+  transition: all 0.8s 0.4s ease-in-out;
+}
+* body #info-container #close-button .icon-wrapper svg {
+  fill: var(--accent);
+}
+* body #control-panel {
+  position: absolute;
+  top: 50%;
+  left: 32px;
+  transform: translateY(-50%);
+  width: auto;
+  height: auto;
+  padding: 8px;
+  background: var(--ui-container-background);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 16px;
+}
+* body #control-panel .icon-button-L {
+  margin-bottom: 48px;
+}
+* body #control-panel .icon-button-L:last-of-type {
+  margin-bottom: 0;
+}
+* body #control-panel .icon-button-L .hidden {
+  opacity: 0;
+}
+* body #control-panel .radio-button-group {
+  position: relative;
+  width: 104px;
+  height: auto;
+  margin-bottom: 48px;
+}
+* body #control-panel .radio-button-group.disabled::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+* body #control-panel .radio-button-group.disabled .radio-button {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  opacity: 60%;
+}
+* body #control-panel .radio-button-group h4 {
+  line-height: 21px;
+  margin: 0 0 16px 8px;
+}
+* body #control-panel .radio-button-group .radio-button {
+  position: relative;
+  width: 100%;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 2px;
+  z-index: 0;
+}
+* body #control-panel .radio-button-group .radio-button.disabled {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  opacity: 60%;
+  cursor: default;
+}
+* body #control-panel .radio-button-group .radio-button.disabled::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  z-index: 35;
+}
+* body #control-panel .radio-button-group .radio-button:last-of-type {
+  margin-bottom: 0;
+}
+* body #control-panel .radio-button-group .radio-button input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+* body #control-panel .radio-button-group .radio-button input::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+* body #control-panel .radio-button-group .radio-button input::after {
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  transform: translateY(-50%);
+  font-family: "Poppins", sans-serif;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 500;
+  z-index: 5;
+}
+* body #control-panel .radio-button-group .radio-button input#overview-toggle::after {
+  content: "Übersicht";
+}
+* body #control-panel .radio-button-group .radio-button input#mood-toggle::after {
+  content: "Stimmung";
+}
+* body #control-panel .radio-button-group .radio-button input#energylevel-toggle::after {
+  content: "Energielevel";
+}
+* body #control-panel .radio-button-group .radio-button input#sebastian-toggle::after {
+  content: "Sebastian";
+}
+* body #control-panel .radio-button-group .radio-button input#steffen-toggle::after {
+  content: "Steffen";
+}
+* body #control-panel .radio-button-group .radio-button input#anton-toggle::after {
+  content: "Anton";
+}
+* body #control-panel .radio-button-group .radio-button input#breakfast-toggle::after {
+  content: "Frühstück";
+}
+* body #control-panel .radio-button-group .radio-button input#lunch-toggle::after {
+  content: "Mittagessen";
+}
+* body #control-panel .radio-button-group .radio-button input#dinner-toggle::after {
+  content: "Abendessen";
+}
+* body #control-panel .radio-button-group .radio-button input#snack-toggle::after {
+  content: "Snack";
+}
+* body #control-panel .radio-button-group .radio-button input:hover::before {
+  background-color: var(--ui-background);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+* body #control-panel .radio-button-group .radio-button input:checked#steffen-toggle::before {
+  background: var(--steffen);
+}
+* body #control-panel .radio-button-group .radio-button input:checked#steffen-toggle::after {
+  color: var(--background);
+}
+* body #control-panel .radio-button-group .radio-button input:checked#sebastian-toggle::before {
+  background: var(--seby);
+}
+* body #control-panel .radio-button-group .radio-button input:checked#sebastian-toggle::after {
+  color: var(--background);
+}
+* body #control-panel .radio-button-group .radio-button input:checked#anton-toggle::before {
+  background: var(--anton);
+}
+* body #control-panel .radio-button-group .radio-button input:checked#anton-toggle::after {
+  color: var(--background);
+}
+* body #control-panel .radio-button-group .radio-button input:checked::before {
+  background: var(--accent);
+}
+* body #meal-info-container {
+  width: 624px;
+  position: absolute;
+  top: 50%;
+  right: -316px;
+  transform: translateY(-50%);
+  padding: 32px 8px 8px 8px;
+  z-index: 25;
+}
+* body #meal-info-container.hidden::before {
+  opacity: 0;
+}
+* body #meal-info-container.hidden h3 {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+* body #meal-info-container.hidden h6 {
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+* body #meal-info-container.hidden .nutrition-container {
+  margin-left: 304px;
+  margin-right: 0;
+  transition-delay: 0;
+}
+* body #meal-info-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 272px;
+  height: 100%;
+  background: var(--ui-container-background);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  border-radius: 24px;
+  z-index: -5;
+  transition: all 0.2s ease-in-out;
+}
+* body #meal-info-container h3 {
+  margin-bottom: 8px;
+  padding-left: 16px;
+  text-shadow: var(--shadow);
+  transition: all 0.4s ease-in-out;
+}
+* body #meal-info-container #time-wrapper {
+  display: flex;
+}
+* body #meal-info-container #time-wrapper h6 {
+  margin-bottom: 32px;
+  text-shadow: var(--shadow);
+  padding-left: 4px;
+  transition: all 0.4s ease-in-out;
+}
+* body #meal-info-container #time-wrapper h6:first-of-type {
+  padding-left: 16px;
+}
+* body #meal-info-container .nutrition-container {
+  position: relative;
+  width: 256px;
+  margin-bottom: 16px;
+  margin-left: 0;
+  margin-right: 304px;
+  padding: 16px 16px 24px 16px;
+  background: var(--ui-background);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
+  border-radius: 16px;
+  transition-property: margin-left, margin-right;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+* body #meal-info-container .nutrition-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  z-index: 20;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+}
+* body #meal-info-container .nutrition-container:hover::after {
+  opacity: 10%;
+}
+* body #meal-info-container .nutrition-container#calorie {
+  transition-delay: 0.1s;
+}
+* body #meal-info-container .nutrition-container#calorie::after {
+  background: var(--calories);
+}
+* body #meal-info-container .nutrition-container#carb {
+  transition-delay: 0.2s;
+}
+* body #meal-info-container .nutrition-container#carb::after {
+  background: var(--carbs);
+}
+* body #meal-info-container .nutrition-container#protein {
+  transition-delay: 0.3s;
+}
+* body #meal-info-container .nutrition-container#protein::after {
+  background: var(--protein);
+}
+* body #meal-info-container .nutrition-container#fat {
+  margin-bottom: 0px;
+  transition-delay: 0.4s;
+}
+* body #meal-info-container .nutrition-container#fat::after {
+  background: var(--fat);
+}
+* body #meal-info-container .nutrition-container h5 {
+  margin-bottom: 16px;
+}
+* body #meal-info-container .nutrition-container .text-wrapper {
+  margin-bottom: 12px;
+}
+* body #meal-info-container .nutrition-container .text-wrapper span {
+  font-size: 14px;
+  line-height: 20px;
+}
+* body #meal-info-container .nutrition-container .progress-bar {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--neutral-grey);
+}
+* body #meal-info-container .nutrition-container .progress-bar .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 2px;
+}
+* body #meal-info-container .nutrition-container .progress-bar #calories-progress {
+  background: var(--calories);
+}
+* body #meal-info-container .nutrition-container .progress-bar #carb-progress {
+  background: var(--carbs);
+}
+* body #meal-info-container .nutrition-container .progress-bar #protein-progress {
+  background: var(--protein);
+}
+* body #meal-info-container .nutrition-container .progress-bar #fat-progress {
+  background: var(--fat);
+}/*# sourceMappingURL=style.css.map */
